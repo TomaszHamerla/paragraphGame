@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interaktywna Gra Paragrafowa</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <div id="game-container">
+    <div id="characters-container">
+      <div class="character" onclick="selectCharacter('Aria Nightrunner')">
+        <img src="aria.jpeg" alt="Aria Nightrunner">
+        <p>Aria Nightrunner</p>
+        <p>Tajemnicza łowczyni ze złotymi włosami i niebieskimi oczami.</p>
+      </div>
+      <div class="character" onclick="selectCharacter('Gideon Ironheart')">
+        <img src="gideon.jpeg" alt="Gideon Ironheart">
+        <p>Gideon Ironheart</p>
+        <p>Weteran wojenny o tajemniczym pochodzeniu. Jego prawa ręka zastąpiona jest mechanicznym ulepszeniem.</p>
+      </div>
+      <div class="character" onclick="selectCharacter('Lyra Shadowdancer')">
+        <img src="lyra.jpeg" alt="Lyra Shadowdancer">
+        <p>Lyra Shadowdancer</p>
+        <p>Czarodziejka posługująca się magią cienia. Jej niebieskie tatuaże świecą, gdy używa potężnych zaklęć.</p>
+      </div>
+    </div>
+    <p id="story">Jesteś podróżnikiem wędrującym przez ciemny las w poszukiwaniu zaginionego skarbu.</p>
+        <div id="options-container">
+      <button onclick="startGame()">Rozpocznij grę</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
