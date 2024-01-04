@@ -75,7 +75,6 @@ function pickCharacter(event) {
   const h2 = document.createElement("h2");
   h2.classList.add("introduction");
 
-  //chcialbym aby ten text wypisywal sie po kolei, ale nie wiem jak to zrobic
   let i = 0;
   let text = characters.find(
     (character) => character.name === event.target.alt
@@ -88,10 +87,6 @@ function pickCharacter(event) {
     }
   }
   typeWriter();
-
-  // h2.innerText = characters.find(
-  //   (character) => character.name === event.target.alt
-  // ).introduction;
 
   div.appendChild(img);
   div.appendChild(h2);
