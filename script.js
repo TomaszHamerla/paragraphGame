@@ -37,6 +37,7 @@ function startGame() {
 
     const img = document.createElement("img");
     img.src = character.img;
+
     img.addEventListener("click", pickCharacter);
 
     const h2 = document.createElement("h2");
@@ -53,11 +54,6 @@ function startGame() {
   });
 }
 
-function pickCharacter() {
-  const characterContainer = document.querySelectorAll(".character-container");
-  characterContainer.forEach((character) => {
-    character.addEventListener("click", () => {
-      console.log(character);
-    });
-  });
+function pickCharacter(event) {
+  console.log(event.target.src);
 }

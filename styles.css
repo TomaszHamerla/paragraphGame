@@ -56,4 +56,5 @@ button:hover {
   max-width: 250px;
   border-radius: 100px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
