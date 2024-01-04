@@ -4,30 +4,42 @@ body {
   background-image: url(/img/background.jpeg);
   background-size: cover;
 }
-#game-container {
-  margin: 100px;
+#start-container {
+  margin-top: 80px;
+  margin-left: 80px;
+  margin-right: 80px;
   background-color: rgba(
     255,
     255,
     255,
     0.8
   ); /* Aby treść była bardziej czytelna na tle obrazka */
-  border-radius: 100px;
-  padding: 20px;
+  border-radius: 50px;
+  padding: 10px;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
+.introduction {
+  margin-left: 40px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+}
 header {
   background-color: #333;
   color: #fff;
   padding: 10px;
   margin: 50px;
 }
+
 p {
   color: #050404;
   font-size: 25px;
   padding: 20px;
   margin: 20px;
+  display: flex;
+  align-items: center;
 }
 
 .button {
@@ -38,18 +50,33 @@ p {
   color: #fff;
   border: none;
   border-radius: 10px;
-  margin: -70px;
+  margin: 70px;
 }
 
 button:hover {
   background-color: #45a049;
 }
 .character-container {
-  border: 1px solid #ddd;
+  width: 270px;
+  height: 600px;
+  border: 1px solid #7e1414;
   border-radius: 10px;
   margin: 20px;
   padding: 10px;
   text-align: center;
+}
+.sleceted-container {
+  text-align: left;
+  display: flex;
+  width: 1249px;
+  align-items: center;
+  justify-content: center;
+}
+.sleceted-container img {
+  width: 250px;
+  height: 250px;
+  border-radius: 100px;
+  margin-bottom: 10px;
 }
 
 .character-container img {
