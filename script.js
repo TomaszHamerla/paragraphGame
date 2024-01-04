@@ -17,12 +17,19 @@ const characters = [
       "Czarodziejka posługująca się magią cienia. Jej niebieskie tatuaże świecą, gdy używa potężnych zaklęć.",
   },
 ];
+const mainContainer = document.querySelector("main");
+const btnStartGame = document.createElement("button");
+btnStartGame.innerText = "Start Game";
+btnStartGame.classList.add("button");
+btnStartGame.addEventListener("click", startGame);
+mainContainer.appendChild(btnStartGame);
 
 function startGame() {
   const h1 = document.querySelector("h1");
   h1.innerText = "Wybierz jedna z 3 postaci";
   const main = document.getElementById("game-container");
   main.innerHTML = "";
+  mainContainer.removeChild(btnStartGame);
 
   characters.forEach((character) => {
     const div = document.createElement("div");
@@ -30,6 +37,7 @@ function startGame() {
 
     const img = document.createElement("img");
     img.src = character.img;
+    img.addEventListener("click", pickCharacter);
 
     const h2 = document.createElement("h2");
     h2.innerText = character.name;
@@ -42,5 +50,14 @@ function startGame() {
     div.appendChild(p);
 
     main.appendChild(div);
+  });
+}
+
+function pickCharacter() {
+  const characterContainer = document.querySelectorAll(".character-container");
+  characterContainer.forEach((character) => {
+    character.addEventListener("click", () => {
+      console.log(character);
+    });
   });
 }
