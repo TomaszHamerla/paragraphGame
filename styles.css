@@ -1,94 +1,55 @@
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* This will make sure your body takes up at least the full height of the viewport */
-  }
-  
-  #game-container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  #characters-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-  }
-  
-  .character {
-    text-align: center;
-    cursor: pointer;
-    width: 30%;
-    margin: 10px;
-  }
-  
-  .character img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    display: block;
-  }
-  
-  #options-container button {
-    display: block;
-    margin-top: 10px;
-    padding: 8px 12px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    width: 80%;
-    text-align: center;
-   
-    
-  }
-  
-  #options-container button:hover {
-    background-color: #45a049;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-image: url(/img/background.jpeg);
+  background-size: cover;
+}
+#game-container {
+  margin: 200px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Aby treść była bardziej czytelna na tle obrazka */
+  border-radius: 100px;
+  padding: 20px;
+}
 
-  }
-  #options-container{
-    display: flex;
-    justify-content: center;
-  }
- 
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 1px;
+  margin: 100px;
+}
+p {
+  color: #050404;
+  font-size: 20px;
+}
 
-#next-card {
-    display: none;
-    margin-top: 20px;
-  }
-  
-  #next-story {
-    margin-bottom: 10px;
-  }
-  
-  #next-options-container button {
-    display: block;
-    padding: 8px 12px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #4CAF50;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-  }
-  
-  #next-options-container button:hover {
-    background-color: #45a049;
-  }
-  
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+.character-container {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 10px;
+  text-align: center;
+}
+
+.character-container img {
+  max-width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
