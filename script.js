@@ -23,11 +23,20 @@ const characters = [
       "Hej, jestem Lyra Shadowdancer. Czarodziejka posługująca się magią cienia. Moje niebieskie tatuaże świecą, gdy wypowiadam potężne zaklęcia, a moje umiejętności magiczne są niezrównane.",
   },
 ];
+//potrzebuje zmienna gdzie beda przechowywwani dodatkowi bohaterowie
+const additionalCharacters = [
+  {
+    name: "Księgowy Cienia",
+    img: "/img/Księgowy Cienia.jpeg",
+    introduction:
+      "Witaj, podróżniku. Jestem Ksiegowy Cienia. W moich księgach zapisane są losy każdego istnienia w tym świecie. Wiedz, że losy twoje i wybranego bohatera są splecione ze sobą jak nitki na wielkim płótnie.\n\n Czy masz odwagę i mądrość, by pokierować wybranym bohaterem przez zawiłości przygody?",
+  },
+];
 
 const mainContainer = document.querySelector("main");
 
 const btnStartGame = document.createElement("button");
-btnStartGame.innerText = "Start Game";
+btnStartGame.innerText = "Rozpocznij grę";
 btnStartGame.classList.add("button");
 btnStartGame.addEventListener("click", startGame);
 mainContainer.appendChild(btnStartGame);
@@ -66,6 +75,12 @@ function startGame() {
 function pickCharacter(event) {
   mainContainer.innerHTML = "";
   mainContainer.style.margin = "50px";
+  mainContainer.style.display = "flex";
+  mainContainer.style.flexDirection = "column";
+  mainContainer.style.justifyContent = "center";
+  mainContainer.style.alignItems = "center";
+  const h1 = document.querySelector("h1");
+  h1.innerText = "Spotkanie losów: Bohater i Podróżnik w Świecie Tajemnic";
 
   const div = document.createElement("div");
   div.classList.add("sleceted-container");
@@ -75,21 +90,42 @@ function pickCharacter(event) {
   const h2 = document.createElement("h2");
   h2.classList.add("introduction");
 
-  let i = 0;
-  let text = characters.find(
-    (character) => character.name === event.target.alt
-  ).introduction;
-  function typeWriter() {
-    if (i < text.length) {
-      h2.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typeWriter, 50);
-    }
-  }
-  typeWriter();
+  const div2 = document.createElement("div");
+  div2.classList.add("sleceted-container");
+  const img2 = document.createElement("img");
+  img2.src = additionalCharacters[0].img;
+  const h22 = document.createElement("h2");
+  h22.classList.add("introduction");
 
   div.appendChild(img);
   div.appendChild(h2);
   mainContainer.appendChild(div);
-  console.log(event.target.alt);
+
+  let text = characters.find(
+    (character) => character.name === event.target.alt
+  ).introduction;
+
+  typeWriter(h2, text).then(() => {
+    let text2 = additionalCharacters[0].introduction;
+    div2.appendChild(h22);
+    div2.appendChild(img2);
+    mainContainer.appendChild(div2);
+    return typeWriter(h22, text2);
+  });
+}
+
+function typeWriter(element, text, delay = 50) {
+  return new Promise((resolve) => {
+    let i = 0;
+    function helper() {
+      if (i < text.length) {
+        element.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(helper, delay);
+      } else {
+        resolve();
+      }
+    }
+    helper();
+  });
 }
