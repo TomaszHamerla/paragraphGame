@@ -223,9 +223,40 @@ function updateStory(story1, story2, title) {
       rejectBtn.innerText = "Odrzuć wyzwanie";
       rejectBtn.classList.add("button-reject");
 
-      rejectBtn.addEventListener("click", startGame);
+      rejectBtn.addEventListener("click", gameOver);
       btnContainer.appendChild(rejectBtn);
 
       mainContainer.appendChild(btnContainer);
     });
+}
+
+function gameOver() {
+  mainContainer.innerHTML = "";
+  mainContainer.classList.add("main-container");
+  const h1 = document.querySelector("h1");
+  h1.innerText = "Koniec gry";
+
+  const div = document.createElement("div");
+  div.classList.add("sleceted-container");
+  const img = document.createElement("img");
+  img.src = "/img/Księgowy Cienia.jpeg";
+  const h2 = document.createElement("h2");
+  h2.classList.add("introduction");
+
+  div.appendChild(img);
+  div.appendChild(h2);
+  mainContainer.appendChild(div);
+
+  typeWriter(h2, "Koniec gry").then(() => {
+    const btnContainer = document.createElement("div");
+    btnContainer.classList.add("button-container");
+
+    const acceptBtn = document.createElement("button");
+    acceptBtn.innerText = "Rozpocznij ponownie";
+    acceptBtn.classList.add("button");
+    acceptBtn.addEventListener("click", startGame);
+    btnContainer.appendChild(acceptBtn);
+
+    mainContainer.appendChild(btnContainer);
+  });
 }
