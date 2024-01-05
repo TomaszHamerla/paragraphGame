@@ -31,18 +31,51 @@ const additionalCharacters = [
     introduction:
       "Witaj, podróżniku. Jestem Ksiegowy Cienia. W moich księgach zapisane są losy każdego istnienia w tym świecie. Wiedz, że losy twoje i wybranego bohatera są splecione ze sobą jak nitki na wielkim płótnie.\n\n Czy masz odwagę i mądrość, by pokierować wybranym bohaterem przez zawiłości przygody?",
   },
+  {
+    name: "Księgowy Cienia",
+    img: "/img/Księgowy Cienia.jpeg",
+    introduction:
+      "Przekroczenie tego portalu otworzy przed wami nowe wyzwania i możliwości. Ale pamiętajcie, losy wasze są nadal splecione. Wybory, które podejmiecie, wpłyną na przyszłość nie tylko waszą, lecz i całego świata.",
+  },
+  {
+    name: "Księgowy Cienia",
+    img: "/img/ksiegowyCienia1.jpeg",
+    introduction:
+      "Witajcie w nowym wymiarze, podróżnicy. Wasza odwaga otworzyła przed wami drzwi do miejsc, gdzie rzeczywistość splata się z magią. Teraz, waszym celem jest odkrycie tajemnic, które skrywają się za każdym zakrętem tego magicznego kompleksu.",
+  },
 ];
 
 const history = [
   {
+    title: "Przejście przez portal",
+    description:
+      "Gracz i wybrany bohater wyruszają w pełną niebezpieczeństw podróż, śladem wskazówek i wskazań Księgowego Cienia. Pierwsze wyzwanie to dotarcie do groźnego lasu, gdzie czekają na nich ukryte pułapki i niebezpieczni przeciwnicy.Po wielu trudach i bojach, bohater i gracz docierają do tajemniczego kompleksu świątynnego. Tam odkrywają zaklęty portal, który prowadzi do innych wymiarów. ",
+  },
+  {
+    title: "Przekroczenie Portalu",
+    description:
+      "Gracz i bohater przechodzą przez zaklęty portal, wyczulając na skórze energię nieznanego wymiaru. Kiedy przejście zostaje zakończone, znajdują się w miejscu o zupełnie odmiennym krajobrazie. Wokół nich unoszą się dziwne światła, a w powietrzu czuć zapach magii. W oddali widzą długi korytarz, prowadzący do kolejnych komnat i tajemniczych pomieszczeń kompleksu. Księgowy Cienia pojawia się jako duch w świetlistym płaszczu",
+  },
+  {
+    title: "Przekroczenie Portalu",
     description:
       "Twoja odwaga niechaj będzie światłem w mroku, podróżniku. Oto zadanie, które czeka przed tobą i twoim bohaterem. W jednym z odległych zakątków świata istnieje starożytny świątynny kompleks, gdzie ukryto mistyczne artefakty. Twoim celem jest dotarcie tam i zdobycie tych skarbów, które posiadają moce, o jakich nie śniłbyś nawet w najbardziej odległych snach.",
   },
+];
+
+const buttons = [
   {
+    name: "Zbadaj korytarz",
     description:
-      "Przekroczenie tego portalu otworzy przed wami nowe wyzwania i możliwości. Ale pamiętajcie, losy wasze są nadal splecione. Wybory, które podejmiecie, wpłyną na przyszłość nie tylko waszą, lecz i całego świata.",
+      "Skierujcie się wzdłuż korytarza, aby odkryć, co kryje się dalej. To może prowadzić do kolejnych wyzwań i zagadek",
+  },
+  {
+    name: "Rozglądaj się wokół",
+    description:
+      "Spróbujcie zebrać informacje o otaczającej was przestrzeni. Może to dostarczyć wam istotnych wskazówek na temat tego, co was czeka.",
   },
 ];
+
 let statGameFlag = false;
 
 const mainContainer = document.querySelector("main");
@@ -142,11 +175,7 @@ function pickCharacter(event) {
       acceptBtn.innerText = "Zaakceptuj wyzwanie";
       acceptBtn.classList.add("button");
       acceptBtn.addEventListener("click", function () {
-        updateStory(
-          history[0].description,
-          history[1].description,
-          "Zaakceptuj Wyzwanie"
-        );
+        updateStory(history, additionalCharacters);
       });
       btnContainer.appendChild(acceptBtn);
 
@@ -177,45 +206,42 @@ function typeWriter(element, text, delay = 5) {
   });
 }
 
-function updateStory(story1, story2, title) {
+function updateStory(history, additionalCharacters) {
   const h1 = document.querySelector("h1");
-  h1.innerText = title;
+  h1.innerText = history[0].title;
   mainContainer.innerHTML = "";
   mainContainer.classList.add("main-container");
 
   const divStory = document.createElement("div");
   divStory.classList.add("sleceted-container");
-  const divImg = document.createElement("img");
-  divImg.src = "/img/Księgowy Cienia.jpeg";
   const h2 = document.createElement("h2");
   h2.classList.add("introduction");
-  divStory.appendChild(divImg);
   divStory.appendChild(h2);
   mainContainer.appendChild(divStory);
 
   const div2 = document.createElement("div");
   div2.classList.add("sleceted-container");
   const divImg2 = document.createElement("img");
-  divImg2.src = "/img/Księgowy Cienia.jpeg";
+  divImg2.src = additionalCharacters[1].img;
   const h22 = document.createElement("h2");
   h22.classList.add("introduction");
 
-  typeWriter(h2, story1)
+  typeWriter(h2, history[0].description)
     .then(() => {
       div2.appendChild(h22);
       div2.appendChild(divImg2);
       mainContainer.appendChild(div2);
-      return typeWriter(h22, story2);
+      return typeWriter(h22, additionalCharacters[1].introduction);
     })
     .then(() => {
       const btnContainer = document.createElement("div");
       btnContainer.classList.add("button-container");
 
       const acceptBtn = document.createElement("button");
-      acceptBtn.innerText = "Zaakceptuj wyzwanie";
+      acceptBtn.innerText = "Przejdz przez portal";
       acceptBtn.classList.add("button");
       acceptBtn.addEventListener("click", function () {
-        updateStory(history[0].description, history[1].description);
+        updateStory3Options(history, additionalCharacters);
       });
       btnContainer.appendChild(acceptBtn);
 
@@ -226,6 +252,64 @@ function updateStory(story1, story2, title) {
       rejectBtn.addEventListener("click", gameOver);
       btnContainer.appendChild(rejectBtn);
 
+      mainContainer.appendChild(btnContainer);
+    });
+}
+
+function updateStory3Options(history, additionalCharacters) {
+  let iStory = 1;
+  let iAdditional = 2;
+  let iButton = 0;
+
+  const h1 = document.querySelector("h1");
+  h1.innerText = history[iStory].title;
+  mainContainer.innerHTML = "";
+  mainContainer.classList.add("main-container");
+
+  const div = document.createElement("div");
+  div.classList.add("sleceted-container");
+  const h2 = document.createElement("h2");
+  h2.classList.add("introduction");
+  div.appendChild(h2);
+  mainContainer.appendChild(div);
+
+  const div2 = document.createElement("div");
+  div2.classList.add("sleceted-container");
+  const h22 = document.createElement("h2");
+  h22.classList.add("introduction");
+  const img = document.createElement("img");
+  img.src = additionalCharacters[iAdditional].img;
+
+  const btnContainer = document.createElement("div");
+  btnContainer.classList.add("button-container");
+
+  const rejectBtn = document.createElement("button");
+  rejectBtn.innerText = "Odrzuć wyzwanie";
+  rejectBtn.classList.add("button-reject");
+  rejectBtn.addEventListener("click", gameOver);
+
+  const sotry1Btn = document.createElement("button");
+  sotry1Btn.innerText = buttons[iButton].name;
+  sotry1Btn.classList.add("button");
+  addHoverEffect(sotry1Btn, iButton);
+
+  const sotry2Btn = document.createElement("button");
+  sotry2Btn.innerText = buttons[iButton + 1].name;
+  sotry2Btn.classList.add("button");
+  addHoverEffect(sotry2Btn, iButton + 1);
+
+  btnContainer.appendChild(sotry1Btn);
+  btnContainer.appendChild(rejectBtn);
+  btnContainer.appendChild(sotry2Btn);
+
+  typeWriter(h2, history[iStory].description)
+    .then(() => {
+      div2.appendChild(h22);
+      div2.appendChild(img);
+      mainContainer.appendChild(div2);
+      return typeWriter(h22, additionalCharacters[iAdditional].introduction);
+    })
+    .then(() => {
       mainContainer.appendChild(btnContainer);
     });
 }
@@ -258,5 +342,14 @@ function gameOver() {
     btnContainer.appendChild(acceptBtn);
 
     mainContainer.appendChild(btnContainer);
+  });
+}
+
+function addHoverEffect(button, index) {
+  button.addEventListener("mouseenter", () => {
+    button.innerText = buttons[index].description;
+  });
+  button.addEventListener("mouseout", () => {
+    button.innerText = buttons[index].name;
   });
 }
