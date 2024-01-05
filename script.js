@@ -316,25 +316,29 @@ function updateStory3Options(buttons) {
     gameOver();
   });
 
-  const btnLeft = document.createElement("button");
-  btnLeft.innerText = buttons.left.name;
-  btnLeft.classList.add("button");
-  addHoverEffect(btnLeft, buttons.left);
-  btnLeft.addEventListener("click", () => {
-    updateStory3Options(buttons.left);
-  });
+  if (buttons.left) {
+    const btnLeft = document.createElement("button");
+    btnLeft.innerText = buttons.left.name;
+    btnLeft.classList.add("button");
+    addHoverEffect(btnLeft, buttons.left);
+    btnLeft.addEventListener("click", () => {
+      updateStory3Options(buttons.left);
+    });
+    btnContainer.appendChild(btnLeft);
+  }
 
-  const btnRight = document.createElement("button");
-  btnRight.innerText = buttons.right.name;
-  btnRight.classList.add("button");
-  addHoverEffect(btnRight, buttons.right);
-  btnRight.addEventListener("click", () => {
-    updateStory3Options(buttons.right);
-  });
-
-  btnContainer.appendChild(btnLeft);
   btnContainer.appendChild(rejectBtn);
-  btnContainer.appendChild(btnRight);
+
+  if (buttons.right) {
+    const btnRight = document.createElement("button");
+    btnRight.innerText = buttons.right.name;
+    btnRight.classList.add("button");
+    addHoverEffect(btnRight, buttons.right);
+    btnRight.addEventListener("click", () => {
+      updateStory3Options(buttons.right);
+    });
+    btnContainer.appendChild(btnRight);
+  }
 
   typeWriter(h2, buttons.history.description)
     .then(() => {
