@@ -43,6 +43,18 @@ const additionalCharacters = [
     introduction:
       "Witajcie w nowym wymiarze, podróżnicy. Wasza odwaga otworzyła przed wami drzwi do miejsc, gdzie rzeczywistość splata się z magią. Teraz, waszym celem jest odkrycie tajemnic, które skrywają się za każdym zakrętem tego magicznego kompleksu.",
   },
+  {
+    name: "Księgowy Cienia",
+    img: "/img/Księgowy Cienia.jpeg",
+    introduction:
+      "To miejsce kipi od magii. Fontanna ta jest źródłem tajemnych mocy. Może dostarczyć wam nowych umiejętności lub wskazań na dalszą drogę. Co zdecydujecie?",
+  },
+  {
+    name: "Księgowy Cienia",
+    img: "/img/Księgowy Cienia.jpeg",
+    introduction:
+      "To drzwi do sekretnego pomieszczenia, gdzie skrywają się tajemnice starożytnych wiedz. Możecie spróbować otworzyć je, ale bądźcie gotowi na to, co tam znajdziecie.",
+  },
 ];
 
 const history = [
@@ -57,9 +69,14 @@ const history = [
       "Gracz i bohater przechodzą przez zaklęty portal, wyczulając na skórze energię nieznanego wymiaru. Kiedy przejście zostaje zakończone, znajdują się w miejscu o zupełnie odmiennym krajobrazie. Wokół nich unoszą się dziwne światła, a w powietrzu czuć zapach magii. W oddali widzą długi korytarz, prowadzący do kolejnych komnat i tajemniczych pomieszczeń kompleksu. Księgowy Cienia pojawia się jako duch w świetlistym płaszczu",
   },
   {
-    title: "Przekroczenie Portalu",
+    title: "Zbadaj korytarz",
     description:
-      "Twoja odwaga niechaj będzie światłem w mroku, podróżniku. Oto zadanie, które czeka przed tobą i twoim bohaterem. W jednym z odległych zakątków świata istnieje starożytny świątynny kompleks, gdzie ukryto mistyczne artefakty. Twoim celem jest dotarcie tam i zdobycie tych skarbów, które posiadają moce, o jakich nie śniłbyś nawet w najbardziej odległych snach.",
+      "Gracz i bohater postanawiają zbadać długi korytarz, który rozciąga się przed nimi. Podążają ścieżką, a światło ich latarni miga w miarę, jak odkrywają kolejne zakamarki. Nagle, napotykają na skrzyżowanie, gdzie korytarze rozchodzą się w trzy różne strony. Postanawiają skierować się w lewo, kierując się w stronę delikatnego świetlistego blasku dochodzącego z oddali. Po kilku krokach docierają do magicznej fontanny emanującej energią. ",
+  },
+  {
+    title: "Rozglądaj się wokół",
+    description:
+      "Gracz i bohater postanawiają rozejrzeć się po otaczającym ich miejscu, starając się zebrać jak najwięcej informacji. Zauważają starożytne symbole na ścianach i mistyczne malowidła, które zdają się opowiadać historię tego miejsca.Nagle, ich uwagę przykuwa niewielka drzwi zabezpieczone magicznym symbolem.",
   },
 ];
 
@@ -73,6 +90,26 @@ const buttons = [
     name: "Rozglądaj się wokół",
     description:
       "Spróbujcie zebrać informacje o otaczającej was przestrzeni. Może to dostarczyć wam istotnych wskazówek na temat tego, co was czeka.",
+  },
+  {
+    name: "Dotknij fontanny",
+    description:
+      "Postanawiają zanurzyć ręce w fontannie, otwierając się na nowe możliwości.",
+  },
+  {
+    name: "Kontynuuj ścieżką",
+    description:
+      "Decydują się opuścić fontannę i kontynuować ścieżkę, nie zamierzając zatrzymywać się na dłużej.",
+  },
+  {
+    name: "Otwórz drzwi",
+    description:
+      " Decydują się otworzyć tajemnicze drzwi, aby odkryć, co skrywa to ukryte pomieszczenie.",
+  },
+  {
+    name: "Kontynuuj ścieżką",
+    description:
+      "Postanawiają pozostawić drzwi nietknięte i kontynuować eksplorację, unikając potencjalnych niebezpieczeństw ukrytych za nimi.",
   },
 ];
 
@@ -190,7 +227,7 @@ function pickCharacter(event) {
     });
 }
 
-function typeWriter(element, text, delay = 5) {
+function typeWriter(element, text, delay = 1) {
   return new Promise((resolve) => {
     let i = 0;
     function helper() {
@@ -256,11 +293,11 @@ function updateStory(history, additionalCharacters) {
     });
 }
 
-function updateStory3Options(history, additionalCharacters) {
-  let iStory = 1;
-  let iAdditional = 2;
-  let iButton = 0;
+let iStory = 1;
+let iAdditional = 2;
+let iButton = 0;
 
+function updateStory3Options(history, additionalCharacters) {
   const h1 = document.querySelector("h1");
   h1.innerText = history[iStory].title;
   mainContainer.innerHTML = "";
@@ -292,11 +329,23 @@ function updateStory3Options(history, additionalCharacters) {
   sotry1Btn.innerText = buttons[iButton].name;
   sotry1Btn.classList.add("button");
   addHoverEffect(sotry1Btn, iButton);
+  sotry1Btn.addEventListener("click", () => {
+    iButton += 2;
+    iAdditional++;
+    iStory++;
+    updateStory3Options(history, additionalCharacters);
+  });
 
   const sotry2Btn = document.createElement("button");
   sotry2Btn.innerText = buttons[iButton + 1].name;
   sotry2Btn.classList.add("button");
   addHoverEffect(sotry2Btn, iButton + 1);
+  sotry2Btn.addEventListener("click", () => {
+    iButton += 4;
+    iAdditional++;
+    iStory++;
+    updateStory3Options(history, additionalCharacters);
+  });
 
   btnContainer.appendChild(sotry1Btn);
   btnContainer.appendChild(rejectBtn);
