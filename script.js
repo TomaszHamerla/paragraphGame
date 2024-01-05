@@ -24,94 +24,89 @@ const characters = [
   },
 ];
 
-const additionalCharacters = [
-  {
-    name: "Księgowy Cienia",
-    img: "/img/Księgowy Cienia.jpeg",
-    introduction:
-      "Witaj, podróżniku. Jestem Ksiegowy Cienia. W moich księgach zapisane są losy każdego istnienia w tym świecie. Wiedz, że losy twoje i wybranego bohatera są splecione ze sobą jak nitki na wielkim płótnie.\n\n Czy masz odwagę i mądrość, by pokierować wybranym bohaterem przez zawiłości przygody?",
+const before3OptionsA = {
+  name: "Księgowy Cienia",
+  img: "/img/Księgowy Cienia.jpeg",
+  introduction:
+    "Przekroczenie tego portalu otworzy przed wami nowe wyzwania i możliwości. Ale pamiętajcie, losy wasze są nadal splecione. Wybory, które podejmiecie, wpłyną na przyszłość nie tylko waszą, lecz i całego świata.",
+};
+const before3OptionsH = {
+  title: "Przejście przez portal",
+  description:
+    "Gracz i wybrany bohater wyruszają w pełną niebezpieczeństw podróż, śladem wskazówek i wskazań Księgowego Cienia. Pierwsze wyzwanie to dotarcie do groźnego lasu, gdzie czekają na nich ukryte pułapki i niebezpieczni przeciwnicy.Po wielu trudach i bojach, bohater i gracz docierają do tajemniczego kompleksu świątynnego. Tam odkrywają zaklęty portal, który prowadzi do innych wymiarów. ",
+};
+
+const buttons = {
+  name: "Przejdz przez portal",
+  description: "Przejdz przez portal",
+  history: {
+    title: "Przekroczenie Portalu",
+    description:
+      "Gracz i bohater przechodzą przez zaklęty portal, wyczulając na skórze energię nieznanego wymiaru. Kiedy przejście zostaje zakończone, znajdują się w miejscu o zupełnie odmiennym krajobrazie. Wokół nich unoszą się dziwne światła, a w powietrzu czuć zapach magii. W oddali widzą długi korytarz, prowadzący do kolejnych komnat i tajemniczych pomieszczeń kompleksu. Księgowy Cienia pojawia się jako duch w świetlistym płaszczu",
   },
-  {
-    name: "Księgowy Cienia",
-    img: "/img/Księgowy Cienia.jpeg",
-    introduction:
-      "Przekroczenie tego portalu otworzy przed wami nowe wyzwania i możliwości. Ale pamiętajcie, losy wasze są nadal splecione. Wybory, które podejmiecie, wpłyną na przyszłość nie tylko waszą, lecz i całego świata.",
-  },
-  {
+  additionalCharacters: {
     name: "Księgowy Cienia",
     img: "/img/ksiegowyCienia1.jpeg",
     introduction:
       "Witajcie w nowym wymiarze, podróżnicy. Wasza odwaga otworzyła przed wami drzwi do miejsc, gdzie rzeczywistość splata się z magią. Teraz, waszym celem jest odkrycie tajemnic, które skrywają się za każdym zakrętem tego magicznego kompleksu.",
   },
-  {
-    name: "Księgowy Cienia",
-    img: "/img/Księgowy Cienia.jpeg",
-    introduction:
-      "To miejsce kipi od magii. Fontanna ta jest źródłem tajemnych mocy. Może dostarczyć wam nowych umiejętności lub wskazań na dalszą drogę. Co zdecydujecie?",
-  },
-  {
-    name: "Księgowy Cienia",
-    img: "/img/Księgowy Cienia.jpeg",
-    introduction:
-      "To drzwi do sekretnego pomieszczenia, gdzie skrywają się tajemnice starożytnych wiedz. Możecie spróbować otworzyć je, ale bądźcie gotowi na to, co tam znajdziecie.",
-  },
-];
+  left: {
+    history: {
+      title: "Zbadaj korytarz",
+      description:
+        "Gracz i bohater postanawiają zbadać długi korytarz, który rozciąga się przed nimi. Podążają ścieżką, a światło ich latarni miga w miarę, jak odkrywają kolejne zakamarki. Nagle, napotykają na skrzyżowanie, gdzie korytarze rozchodzą się w trzy różne strony. Postanawiają skierować się w lewo, kierując się w stronę delikatnego świetlistego blasku dochodzącego z oddali. Po kilku krokach docierają do magicznej fontanny emanującej energią. ",
+    },
+    additionalCharacters: {
+      name: "Księgowy Cienia",
+      img: "/img/Księgowy Cienia.jpeg",
+      introduction:
+        "To miejsce kipi od magii. Fontanna ta jest źródłem tajemnych mocy. Może dostarczyć wam nowych umiejętności lub wskazań na dalszą drogę. Co zdecydujecie?",
+    },
 
-const history = [
-  {
-    title: "Przejście przez portal",
-    description:
-      "Gracz i wybrany bohater wyruszają w pełną niebezpieczeństw podróż, śladem wskazówek i wskazań Księgowego Cienia. Pierwsze wyzwanie to dotarcie do groźnego lasu, gdzie czekają na nich ukryte pułapki i niebezpieczni przeciwnicy.Po wielu trudach i bojach, bohater i gracz docierają do tajemniczego kompleksu świątynnego. Tam odkrywają zaklęty portal, który prowadzi do innych wymiarów. ",
-  },
-  {
-    title: "Przekroczenie Portalu",
-    description:
-      "Gracz i bohater przechodzą przez zaklęty portal, wyczulając na skórze energię nieznanego wymiaru. Kiedy przejście zostaje zakończone, znajdują się w miejscu o zupełnie odmiennym krajobrazie. Wokół nich unoszą się dziwne światła, a w powietrzu czuć zapach magii. W oddali widzą długi korytarz, prowadzący do kolejnych komnat i tajemniczych pomieszczeń kompleksu. Księgowy Cienia pojawia się jako duch w świetlistym płaszczu",
-  },
-  {
-    title: "Zbadaj korytarz",
-    description:
-      "Gracz i bohater postanawiają zbadać długi korytarz, który rozciąga się przed nimi. Podążają ścieżką, a światło ich latarni miga w miarę, jak odkrywają kolejne zakamarki. Nagle, napotykają na skrzyżowanie, gdzie korytarze rozchodzą się w trzy różne strony. Postanawiają skierować się w lewo, kierując się w stronę delikatnego świetlistego blasku dochodzącego z oddali. Po kilku krokach docierają do magicznej fontanny emanującej energią. ",
-  },
-  {
-    title: "Rozglądaj się wokół",
-    description:
-      "Gracz i bohater postanawiają rozejrzeć się po otaczającym ich miejscu, starając się zebrać jak najwięcej informacji. Zauważają starożytne symbole na ścianach i mistyczne malowidła, które zdają się opowiadać historię tego miejsca.Nagle, ich uwagę przykuwa niewielka drzwi zabezpieczone magicznym symbolem.",
-  },
-];
-
-const buttons = [
-  {
     name: "Zbadaj korytarz",
     description:
       "Skierujcie się wzdłuż korytarza, aby odkryć, co kryje się dalej. To może prowadzić do kolejnych wyzwań i zagadek",
+    left: {
+      name: "Dotknij fontanny",
+      description:
+        "Postanawiają zanurzyć ręce w fontannie, otwierając się na nowe możliwości.",
+    },
+    right: {
+      history: {},
+      additionalCharacters: {},
+      name: "Kontynuuj ścieżką",
+      description:
+        "Decydują się opuścić fontannę i kontynuować ścieżkę, nie zamierzając zatrzymywać się na dłużej.",
+    },
   },
-  {
+
+  right: {
+    history: {
+      title: "Rozglądaj się wokół",
+      description:
+        "Gracz i bohater postanawiają rozejrzeć się po otaczającym ich miejscu, starając się zebrać jak najwięcej informacji. Zauważają starożytne symbole na ścianach i mistyczne malowidła, które zdają się opowiadać historię tego miejsca.Nagle, ich uwagę przykuwa niewielka drzwi zabezpieczone magicznym symbolem.",
+    },
+    additionalCharacters: {
+      name: "Księgowy Cienia",
+      img: "/img/Księgowy Cienia.jpeg",
+      introduction:
+        "To drzwi do sekretnego pomieszczenia, gdzie skrywają się tajemnice starożytnych wiedz. Możecie spróbować otworzyć je, ale bądźcie gotowi na to, co tam znajdziecie.",
+    },
     name: "Rozglądaj się wokół",
     description:
       "Spróbujcie zebrać informacje o otaczającej was przestrzeni. Może to dostarczyć wam istotnych wskazówek na temat tego, co was czeka.",
+    left: {
+      name: "Otwórz drzwi",
+      description:
+        " Decydują się otworzyć tajemnicze drzwi, aby odkryć, co skrywa to ukryte pomieszczenie.",
+    },
+    right: {
+      name: "Kontynuuj ścieżką",
+      description:
+        "Postanawiają pozostawić drzwi nietknięte i kontynuować eksplorację, unikając potencjalnych niebezpieczeństw ukrytych za nimi.",
+    },
   },
-  {
-    name: "Dotknij fontanny",
-    description:
-      "Postanawiają zanurzyć ręce w fontannie, otwierając się na nowe możliwości.",
-  },
-  {
-    name: "Kontynuuj ścieżką",
-    description:
-      "Decydują się opuścić fontannę i kontynuować ścieżkę, nie zamierzając zatrzymywać się na dłużej.",
-  },
-  {
-    name: "Otwórz drzwi",
-    description:
-      " Decydują się otworzyć tajemnicze drzwi, aby odkryć, co skrywa to ukryte pomieszczenie.",
-  },
-  {
-    name: "Kontynuuj ścieżką",
-    description:
-      "Postanawiają pozostawić drzwi nietknięte i kontynuować eksplorację, unikając potencjalnych niebezpieczeństw ukrytych za nimi.",
-  },
-];
+};
 
 let statGameFlag = false;
 
@@ -184,7 +179,7 @@ function pickCharacter(event) {
   const div2 = document.createElement("div");
   div2.classList.add("sleceted-container");
   const img2 = document.createElement("img");
-  img2.src = additionalCharacters[0].img;
+  img2.src = before3OptionsA.img;
   const h22 = document.createElement("h2");
   h22.classList.add("introduction");
 
@@ -198,7 +193,7 @@ function pickCharacter(event) {
 
   typeWriter(h2, text)
     .then(() => {
-      let text2 = additionalCharacters[0].introduction;
+      let text2 = before3OptionsA.introduction;
       div2.appendChild(h22);
       div2.appendChild(img2);
       mainContainer.appendChild(div2);
@@ -211,9 +206,7 @@ function pickCharacter(event) {
       const acceptBtn = document.createElement("button");
       acceptBtn.innerText = "Zaakceptuj wyzwanie";
       acceptBtn.classList.add("button");
-      acceptBtn.addEventListener("click", function () {
-        updateStory(history, additionalCharacters);
-      });
+      acceptBtn.addEventListener("click", updateStory);
       btnContainer.appendChild(acceptBtn);
 
       const rejectBtn = document.createElement("button");
@@ -243,9 +236,9 @@ function typeWriter(element, text, delay = 1) {
   });
 }
 
-function updateStory(history, additionalCharacters) {
+function updateStory() {
   const h1 = document.querySelector("h1");
-  h1.innerText = history[0].title;
+  h1.innerText = before3OptionsH.title;
   mainContainer.innerHTML = "";
   mainContainer.classList.add("main-container");
 
@@ -259,26 +252,26 @@ function updateStory(history, additionalCharacters) {
   const div2 = document.createElement("div");
   div2.classList.add("sleceted-container");
   const divImg2 = document.createElement("img");
-  divImg2.src = additionalCharacters[1].img;
+  divImg2.src = before3OptionsA.img;
   const h22 = document.createElement("h2");
   h22.classList.add("introduction");
 
-  typeWriter(h2, history[0].description)
+  typeWriter(h2, before3OptionsH.description)
     .then(() => {
       div2.appendChild(h22);
       div2.appendChild(divImg2);
       mainContainer.appendChild(div2);
-      return typeWriter(h22, additionalCharacters[1].introduction);
+      return typeWriter(h22, before3OptionsA.introduction);
     })
     .then(() => {
       const btnContainer = document.createElement("div");
       btnContainer.classList.add("button-container");
 
       const acceptBtn = document.createElement("button");
-      acceptBtn.innerText = "Przejdz przez portal";
+      acceptBtn.innerText = buttons.name;
       acceptBtn.classList.add("button");
       acceptBtn.addEventListener("click", function () {
-        updateStory3Options(history, additionalCharacters);
+        updateStory3Options(buttons);
       });
       btnContainer.appendChild(acceptBtn);
 
@@ -293,13 +286,9 @@ function updateStory(history, additionalCharacters) {
     });
 }
 
-let iStory = 1;
-let iAdditional = 2;
-let iButton = 0;
-
-function updateStory3Options(history, additionalCharacters) {
+function updateStory3Options(buttons) {
   const h1 = document.querySelector("h1");
-  h1.innerText = history[iStory].title;
+  h1.innerText = buttons.history.title;
   mainContainer.innerHTML = "";
   mainContainer.classList.add("main-container");
 
@@ -315,7 +304,7 @@ function updateStory3Options(history, additionalCharacters) {
   const h22 = document.createElement("h2");
   h22.classList.add("introduction");
   const img = document.createElement("img");
-  img.src = additionalCharacters[iAdditional].img;
+  img.src = buttons.additionalCharacters.img;
 
   const btnContainer = document.createElement("div");
   btnContainer.classList.add("button-container");
@@ -323,40 +312,36 @@ function updateStory3Options(history, additionalCharacters) {
   const rejectBtn = document.createElement("button");
   rejectBtn.innerText = "Odrzuć wyzwanie";
   rejectBtn.classList.add("button-reject");
-  rejectBtn.addEventListener("click", gameOver);
-
-  const sotry1Btn = document.createElement("button");
-  sotry1Btn.innerText = buttons[iButton].name;
-  sotry1Btn.classList.add("button");
-  addHoverEffect(sotry1Btn, iButton);
-  sotry1Btn.addEventListener("click", () => {
-    iButton += 2;
-    iAdditional++;
-    iStory++;
-    updateStory3Options(history, additionalCharacters);
+  rejectBtn.addEventListener("click", () => {
+    gameOver();
   });
 
-  const sotry2Btn = document.createElement("button");
-  sotry2Btn.innerText = buttons[iButton + 1].name;
-  sotry2Btn.classList.add("button");
-  addHoverEffect(sotry2Btn, iButton + 1);
-  sotry2Btn.addEventListener("click", () => {
-    iButton += 4;
-    iAdditional++;
-    iStory++;
-    updateStory3Options(history, additionalCharacters);
+  const btnLeft = document.createElement("button");
+  btnLeft.innerText = buttons.left.name;
+  btnLeft.classList.add("button");
+  addHoverEffect(btnLeft, buttons.left);
+  btnLeft.addEventListener("click", () => {
+    updateStory3Options(buttons.left);
   });
 
-  btnContainer.appendChild(sotry1Btn);
+  const btnRight = document.createElement("button");
+  btnRight.innerText = buttons.right.name;
+  btnRight.classList.add("button");
+  addHoverEffect(btnRight, buttons.right);
+  btnRight.addEventListener("click", () => {
+    updateStory3Options(buttons.right);
+  });
+
+  btnContainer.appendChild(btnLeft);
   btnContainer.appendChild(rejectBtn);
-  btnContainer.appendChild(sotry2Btn);
+  btnContainer.appendChild(btnRight);
 
-  typeWriter(h2, history[iStory].description)
+  typeWriter(h2, buttons.history.description)
     .then(() => {
       div2.appendChild(h22);
       div2.appendChild(img);
       mainContainer.appendChild(div2);
-      return typeWriter(h22, additionalCharacters[iAdditional].introduction);
+      return typeWriter(h22, buttons.additionalCharacters.introduction);
     })
     .then(() => {
       mainContainer.appendChild(btnContainer);
@@ -394,11 +379,11 @@ function gameOver() {
   });
 }
 
-function addHoverEffect(button, index) {
+function addHoverEffect(button, btn) {
   button.addEventListener("mouseenter", () => {
-    button.innerText = buttons[index].description;
+    button.innerText = btn.description;
   });
   button.addEventListener("mouseout", () => {
-    button.innerText = buttons[index].name;
+    button.innerText = btn.name;
   });
 }
