@@ -23,7 +23,7 @@ const characters = [
       "Hej, jestem Lyra Shadowdancer. Czarodziejka posługująca się magią cienia. Moje niebieskie tatuaże świecą, gdy wypowiadam potężne zaklęcia, a moje umiejętności magiczne są niezrównane.",
   },
 ];
-//potrzebuje zmienna gdzie beda przechowywwani dodatkowi bohaterowie
+
 const additionalCharacters = [
   {
     name: "Księgowy Cienia",
@@ -35,18 +35,18 @@ const additionalCharacters = [
 
 const mainContainer = document.querySelector("main");
 
-const btnStartGame = document.createElement("button");
-btnStartGame.innerText = "Rozpocznij grę";
-btnStartGame.classList.add("button");
-btnStartGame.addEventListener("click", startGame);
-mainContainer.appendChild(btnStartGame);
+const start = document.createElement("button");
+start.innerText = "Rozpocznij grę";
+start.classList.add("button");
+start.addEventListener("click", startGame);
+mainContainer.appendChild(start);
 
 function startGame() {
   const h1 = document.querySelector("h1");
   h1.innerText = "Wybierz jedna z 3 postaci";
   const main = document.getElementById("start-container");
-  main.innerHTML = "";
-  mainContainer.removeChild(btnStartGame);
+  // main.innerHTML = "";
+  mainContainer.removeChild(start);
 
   characters.forEach((character) => {
     const div = document.createElement("div");
@@ -105,16 +105,36 @@ function pickCharacter(event) {
     (character) => character.name === event.target.alt
   ).introduction;
 
-  typeWriter(h2, text).then(() => {
-    let text2 = additionalCharacters[0].introduction;
-    div2.appendChild(h22);
-    div2.appendChild(img2);
-    mainContainer.appendChild(div2);
-    return typeWriter(h22, text2);
-  });
+  typeWriter(h2, text)
+    .then(() => {
+      let text2 = additionalCharacters[0].introduction;
+      div2.appendChild(h22);
+      div2.appendChild(img2);
+      mainContainer.appendChild(div2);
+      return typeWriter(h22, text2);
+    })
+    .then(() => {
+      const btnContainer = document.createElement("div");
+      btnContainer.classList.add("button-container");
+
+      const acceptBtn = document.createElement("button");
+      acceptBtn.innerText = "Zaakceptuj wyzwanie";
+      acceptBtn.classList.add("button");
+      acceptBtn.addEventListener("click", startGame);
+      btnContainer.appendChild(acceptBtn);
+
+      const rejectBtn = document.createElement("button");
+      rejectBtn.innerText = "Odrzuć wyzwanie";
+      rejectBtn.classList.add("button-reject");
+
+      rejectBtn.addEventListener("click", startGame);
+      btnContainer.appendChild(rejectBtn);
+
+      mainContainer.appendChild(btnContainer);
+    });
 }
 
-function typeWriter(element, text, delay = 50) {
+function typeWriter(element, text, delay = 5) {
   return new Promise((resolve) => {
     let i = 0;
     function helper() {

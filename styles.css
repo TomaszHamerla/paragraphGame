@@ -50,6 +50,19 @@ p {
 button:hover {
   background-color: #45a049;
 }
+.button-reject {
+  padding: 30px 90px;
+  font-size: 30px;
+  cursor: pointer;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  margin: 70px;
+}
+.button-reject:hover {
+  background-color: #5f0404;
+}
 .character-container {
   width: 270px;
   height: 600px;
@@ -78,4 +91,9 @@ button:hover {
   border-radius: 100px;
   margin-bottom: 10px;
   cursor: pointer;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
