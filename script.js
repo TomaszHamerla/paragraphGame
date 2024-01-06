@@ -260,9 +260,30 @@ const buttons = {
         },
       },
       right: {
+        history: {
+          title: "Szukaj artefaktów",
+          description:
+            "Gracz i bohater skierowują swoją uwagę na poszukiwanie magicznych artefaktów w pomieszczeniu. Starają się znaleźć przedmioty o potężnych właściwościach, które mogą zwiększyć ich siłę i zdolności.Księgowy Cienia przygląda się ich poszukiwaniom i wskazuje na jeden z magicznych artefaktów. Mówi:",
+        },
+        additionalCharacters: {
+          name: "Księgowy Cienia",
+          img: "/img/Księgowy Cienia.jpeg",
+          introduction:
+            "Te artefakty są źródłem niezwykłej mocy. Wybierając je, zwiększycie swoje umiejętności i przygotujecie się lepiej na przyszłość.",
+        },
         name: "Szukaj artefaktów",
         description:
           "Skierowują swoją uwagę na poszukiwanie magicznych artefaktów, które mogą zwiększyć ich umiejętności.",
+        left: {
+          name: "Znajdź artefakt",
+          description:
+            "Postanawiają skupić się na poszukiwaniu magicznego artefaktu, który może zwiększyć ich siłę.",
+        },
+        right: {
+          name: "Zbadaj rytuały",
+          description:
+            "Decydują się skupić na badaniu starożytnych rytuałów, aby odkryć ich znaczenie.",
+        },
       },
     },
     right: {
@@ -549,10 +570,17 @@ function updateStory3Options(buttons) {
     btnLeft.innerText = buttons.left.name;
     btnLeft.classList.add("button");
     addHoverEffect(btnLeft, buttons.left);
-    btnLeft.addEventListener("click", () => {
-      updateStory3Options(buttons.left);
-    });
-    btnContainer.appendChild(btnLeft);
+    if (buttons.left.history) {
+      btnLeft.addEventListener("click", () => {
+        updateStory3Options(buttons.left);
+      });
+      btnContainer.appendChild(btnLeft);
+    } else {
+      btnLeft.addEventListener("click", () => {
+        gameOver();
+      });
+      btnContainer.appendChild(btnLeft);
+    }
   }
 
   btnContainer.appendChild(rejectBtn);
@@ -562,10 +590,17 @@ function updateStory3Options(buttons) {
     btnRight.innerText = buttons.right.name;
     btnRight.classList.add("button");
     addHoverEffect(btnRight, buttons.right);
-    btnRight.addEventListener("click", () => {
-      updateStory3Options(buttons.right);
-    });
-    btnContainer.appendChild(btnRight);
+    if (buttons.right.history) {
+      btnRight.addEventListener("click", () => {
+        updateStory3Options(buttons.right);
+      });
+      btnContainer.appendChild(btnRight);
+    } else {
+      btnRight.addEventListener("click", () => {
+        gameOver();
+      });
+      btnContainer.appendChild(btnRight);
+    }
   }
 
   typeWriter(h2, buttons.history.description)
@@ -578,6 +613,12 @@ function updateStory3Options(buttons) {
     .then(() => {
       mainContainer.appendChild(btnContainer);
     });
+}
+function resumeGame() {
+  mainContainer.innerHTML = "";
+  mainContainer.classList.add("main-container");
+  const h1 = document.querySelector("h1");
+  h1.innerText = "To już koniec tej historii";
 }
 
 function gameOver() {
