@@ -106,11 +106,26 @@ button:hover {
 #audioPlayer {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   margin-top: 20px;
+  margin-left: 20px;
 }
 
 audio {
-  width: 300px;
-  margin-right: 10px;
+  width: 320px;
+  background-color: #5c4747;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+audio::-webkit-media-controls {
+  background-color: #585050;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
