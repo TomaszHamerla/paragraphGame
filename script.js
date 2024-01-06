@@ -5,6 +5,8 @@ const characters = [
     description: "Tajemnicza łowczyni ze złotymi włosami i niebieskimi oczami.",
     introduction:
       "Cześć, jestem Aria Nightrunner. Tajemnicza łowczyni ze złotymi włosami i niebieskimi oczami. Moje strzały są pewne, a zwinność pozwala mi działać niezauważenie.",
+    closingWords:
+      "Dziękuję za wspólną przygodę! Moje strzały zawsze znajdują swój cel, a twoja obecność sprawiła, że każda walka była jeszcze bardziej ekscytująca. Do zobaczenia!",
   },
   {
     name: "Gideon Ironheart",
@@ -13,6 +15,8 @@ const characters = [
       "Weteran wojenny o tajemniczym pochodzeniu. Jego prawa ręka zastąpiona jest mechanicznym ulepszeniem.",
     introduction:
       "Witaj, nazywam się Gideon Ironheart. Weteran wojenny z tajemniczym pochodzeniem. Moja prawa ręka została zastąpiona mechanicznym ulepszeniem, co sprawia, że jestem gotów na każdą walkę.",
+    closingWords:
+      "Dzięki za towarzystwo podczas walki! Moje mechaniczne wzmocnienie zawsze było gotowe do akcji, a twoja odwaga sprawiła, że wspólne starcia były niezapomniane. Do zobaczenia na polu bitwy!",
   },
   {
     name: "Lyra Shadowdancer",
@@ -21,15 +25,27 @@ const characters = [
       "Czarodziejka posługująca się magią cienia. Jej niebieskie tatuaże świecą, gdy używa potężnych zaklęć.",
     introduction:
       "Hej, jestem Lyra Shadowdancer. Czarodziejka posługująca się magią cienia. Moje niebieskie tatuaże świecą, gdy wypowiadam potężne zaklęcia, a moje umiejętności magiczne są niezrównane.",
+    closingWords:
+      "Dzięki za podróż przez świat magii! Moje zaklęcia zawsze były potężne, a twój spryt sprawił, że każda przygoda była pełna niespodzianek. Do zobaczenia w innym wymiarze!",
   },
 ];
 
-const before3OptionsA = {
-  name: "Księgowy Cienia",
-  img: "/img/Księgowy Cienia.jpeg",
-  introduction:
-    "Przekroczenie tego portalu otworzy przed wami nowe wyzwania i możliwości. Ale pamiętajcie, losy wasze są nadal splecione. Wybory, które podejmiecie, wpłyną na przyszłość nie tylko waszą, lecz i całego świata.",
-};
+const before3OptionsA = [
+  {
+    name: "Księgowy Cienia",
+    img: "/img/Księgowy Cienia.jpeg",
+    introduction:
+      "Witaj, zmęczony wędrowcze. Jestem Księgowym Cienia. W moich księgach zapisane są losy każdego istnienia w tym świecie. Wiedz, że losy twoje i wybranego bohatera są splecione ze sobą jak nitki na wielkim płótnie. Czy masz odwagę i mądrość, by pokierować wybranym bohaterem przez zawiłości przygody?",
+    closingWords:
+      "Dziękuję, odważny podrożniku, za śmiałość, jaką wykazałeś się podczas tej niezwykłej podróży. Wasze losy były jak otwarta księga, a wasza odwaga jak jasne światło w mroku. Niech teraz wasza droga prowadzi do nowych przygód i niezapomnianych chwil. Pamiętajcie, że losy wasze pozostaną zapisane na kartach moich ksiąg. Do zobaczenia w kolejnej opowieści!",
+  },
+  {
+    name: "Księgowy Cienia",
+    img: "/img/Księgowy Cienia.jpeg",
+    introduction:
+      "Przekroczenie tego portalu otworzy przed wami nowe wyzwania i możliwości. Ale pamiętajcie, losy wasze są nadal splecione. Wybory, które podejmiecie, wpłyną na przyszłość nie tylko waszą, lecz i całego świata.",
+  },
+];
 const before3OptionsH = {
   title: "Przejście przez portal",
   description:
@@ -406,8 +422,10 @@ function startGame() {
     main.appendChild(div);
   });
 }
-
+let heroPicked;
 function pickCharacter(event) {
+  heroPicked = event.target.alt;
+
   mainContainer.innerHTML = "";
   mainContainer.style.margin = "50px";
   mainContainer.style.display = "flex";
@@ -428,7 +446,7 @@ function pickCharacter(event) {
   const div2 = document.createElement("div");
   div2.classList.add("sleceted-container");
   const img2 = document.createElement("img");
-  img2.src = before3OptionsA.img;
+  img2.src = before3OptionsA[0].img;
   const h22 = document.createElement("h2");
   h22.classList.add("introduction");
 
@@ -442,7 +460,7 @@ function pickCharacter(event) {
 
   typeWriter(h2, text)
     .then(() => {
-      let text2 = before3OptionsA.introduction;
+      let text2 = before3OptionsA[0].introduction;
       div2.appendChild(h22);
       div2.appendChild(img2);
       mainContainer.appendChild(div2);
@@ -501,7 +519,7 @@ function updateStory() {
   const div2 = document.createElement("div");
   div2.classList.add("sleceted-container");
   const divImg2 = document.createElement("img");
-  divImg2.src = before3OptionsA.img;
+  divImg2.src = before3OptionsA[1].img;
   const h22 = document.createElement("h2");
   h22.classList.add("introduction");
 
@@ -510,7 +528,7 @@ function updateStory() {
       div2.appendChild(h22);
       div2.appendChild(divImg2);
       mainContainer.appendChild(div2);
-      return typeWriter(h22, before3OptionsA.introduction);
+      return typeWriter(h22, before3OptionsA[1].introduction);
     })
     .then(() => {
       const btnContainer = document.createElement("div");
@@ -577,7 +595,7 @@ function updateStory3Options(buttons) {
       btnContainer.appendChild(btnLeft);
     } else {
       btnLeft.addEventListener("click", () => {
-        gameOver();
+        showResult();
       });
       btnContainer.appendChild(btnLeft);
     }
@@ -597,7 +615,7 @@ function updateStory3Options(buttons) {
       btnContainer.appendChild(btnRight);
     } else {
       btnRight.addEventListener("click", () => {
-        gameOver();
+        showResult();
       });
       btnContainer.appendChild(btnRight);
     }
@@ -614,11 +632,47 @@ function updateStory3Options(buttons) {
       mainContainer.appendChild(btnContainer);
     });
 }
-function resumeGame() {
+function showResult() {
   mainContainer.innerHTML = "";
   mainContainer.classList.add("main-container");
   const h1 = document.querySelector("h1");
   h1.innerText = "To już koniec tej historii";
+  const hero = characters.find((character) => character.name === heroPicked);
+  const div = document.createElement("div");
+  div.classList.add("sleceted-container");
+  const img = document.createElement("img");
+  img.src = hero.img;
+  div.appendChild(img);
+  const h2 = document.createElement("h2");
+  h2.classList.add("introduction");
+  div.appendChild(h2);
+  mainContainer.appendChild(div);
+
+  const h22 = document.createElement("h2");
+  h22.classList.add("introduction");
+  const div2 = document.createElement("div");
+  div2.classList.add("sleceted-container");
+  const img2 = document.createElement("img");
+  img2.src = before3OptionsA[0].img;
+  typeWriter(h2, hero.closingWords)
+    .then(() => {
+      div2.appendChild(h22);
+      div2.appendChild(img2);
+      mainContainer.appendChild(div2);
+      return typeWriter(h22, before3OptionsA[0].closingWords);
+    })
+    .then(() => {
+      const btnContainer = document.createElement("div");
+      btnContainer.classList.add("button-container");
+
+      const acceptBtn = document.createElement("button");
+      acceptBtn.innerText = "Zagraj ponownie";
+      acceptBtn.classList.add("button");
+      acceptBtn.addEventListener("click", startGame);
+      btnContainer.appendChild(acceptBtn);
+
+      mainContainer.appendChild(btnContainer);
+    });
 }
 
 function gameOver() {
