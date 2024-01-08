@@ -1,4 +1,4 @@
-export const buttons = {
+export const gameScenario = {
   name: "Przejdz przez portal",
   description: "Przejdz przez portal",
   history: {

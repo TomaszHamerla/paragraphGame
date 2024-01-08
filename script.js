@@ -1,4 +1,4 @@
-import { buttons } from "./data.js";
+import { gameScenario } from "./data.js";
 import { characters } from "./data.js";
 import { before3OptionsH } from "./data.js";
 import { before3OptionsA } from "./data.js";
@@ -165,10 +165,10 @@ function updateStory() {
       btnContainer.classList.add("button-container");
 
       const acceptBtn = document.createElement("button");
-      acceptBtn.innerText = buttons.name;
+      acceptBtn.innerText = gameScenario.name;
       acceptBtn.classList.add("button");
       acceptBtn.addEventListener("click", function () {
-        updateStory3Options(buttons);
+        updateStory3Options(gameScenario);
       });
       btnContainer.appendChild(acceptBtn);
 
