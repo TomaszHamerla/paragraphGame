@@ -369,5 +369,5 @@ export const before3OptionsA = [
 export const before3OptionsH = {
   title: "Przejście przez portal",
   description:
-    "Gracz i wybrany bohater wyruszają w pełną niebezpieczeństw podróż, śladem wskazówek i wskazań Księgowego Cienia. Pierwsze wyzwanie to dotarcie do groźnego lasu, gdzie czekają na nich ukryte pułapki i niebezpieczni przeciwnicy.Po wielu trudach i bojach, bohater i gracz docierają do tajemniczego kompleksu świątynnego. Tam odkrywają zaklęty portal, który prowadzi do innych wymiarów. ",
+    "Gracz i wybrany bohater wyruszają w pełną niebezpieczeństw podróż, śladem wskazówek i wskazań Księgowego Cienia. Pierwsze wyzwanie to dotarcie do groźnego lasu, gdzie czekają na nich ukryte pułapki i niebezpieczni przeciwnicy. Po wielu trudach i bojach, bohater i gracz docierają do tajemniczego kompleksu świątynnego. Tam odkrywają zaklęty portal, który prowadzi do innych wymiarów. ",
 };

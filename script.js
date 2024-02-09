@@ -117,10 +117,10 @@ function pickCharacter(event) {
     });
 }
 
-function typeWriter(element, text, delay = 1) {
+function typeWriter(element, text, delay = 58) {
    const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = 'pl-PL';
-    utterance.rate = 0.7;
+    utterance.rate = 1.8;
     utterance.pitch = 1;
     window.speechSynthesis.speak(utterance);
   
